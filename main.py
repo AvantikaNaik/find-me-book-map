@@ -1,5 +1,17 @@
 import folium
 from folium import plugins
+import pandas as pd
+import requests
+from io import BytesIO
+import links
+
+# Get data
+url = f"https://docs.google.com/spreadsheets/d/{links.sheet_id}/export?gid={links.sheet_name}&format=csv"
+
+df = pd.read_csv(url)
+
+print(df)
+
 
 # Create a map centered at a specific location
 mymap = folium.Map(location=[0, 0], zoom_start=2)
